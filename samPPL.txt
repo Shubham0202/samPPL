@@ -1,0 +1,36 @@
+import scala.io.StdIn._
+
+object CombinedScalaProgram {
+  def main(args: Array[String]): Unit = {
+    val input = readLine("Enter a string: ")
+    println(s"Uppercase Count: ${input.count(_.isUpper)}, Lowercase: ${input.toLowerCase}")
+
+    print("Enter a character to count: ")
+    val ch = readChar()
+    println(s"Occurrences of '$ch': ${input.count(_ == ch)}")
+
+    print("Enter position to remove (0-based): ")
+    val pos = readInt()
+    println(if (pos >= 0 && pos < input.length) s"After removal: ${input.patch(pos, "", 1)}" else "Invalid position!")
+
+    println(s"The string is ${if (input == input.reverse) "" else "not "}a palindrome.")
+  }
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+import scala.io.StdIn._
+
+object CombinedProgram {
+  def main(args: Array[String]): Unit = {
+    val (str1, str2) = (readLine("First string: "), readLine("Second string: "))
+    println(s"Rotations: ${str1.length == str2.length && (str1 + str1).contains(str2)}")
+
+    val array = Array("Scala", "Java", "Python", "C++", "Kotlin")
+    println(s"Matches: ${array.filter(_.contains(readLine("Search string: "))).mkString(", ")}")
+
+    println(s"Reversed words: ${readLine("Sentence: ").split(" ").map(_.reverse).mkString(" ")}")
+
+    val (s1, s2) = (readLine("First string: "), readLine("Second string: "))
+    println(s"Appended: ${s1.takeRight(s2.length) + s2.takeRight(s1.length)}")
+  }
+}
